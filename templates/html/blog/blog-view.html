@@ -12,8 +12,8 @@
 {% block socialDescription %}{{blog.meta_description}}{% endblock socialDescription %}
 {% block pageType %}article{% endblock pageType %}
 {% comment %} {% block pageLink %}{% endblock pageLink %} {% endcomment %}
-{% if blog.blogimage_set.all|first %}
-    {% block pageImage %}{{ blog.blogimage_set.all.0.image.url }}{% endblock pageImage %}
+{% if blog.thumbnail %}
+    {% block pageImage %}{{ blog.thumbnail }}{% endblock pageImage %}
 {% endif %}
 
 {% block head_tags %}
@@ -42,7 +42,7 @@
     </div>
     
     <div class="tw-mt-6 tw-w-full tw-text-lg 
-                tw-text-justify tw-leading-relaxed" id="quill-editor">
+                tw-text-justify tw-leading-relaxed" id="editor">
             {{blog.body|safe}}
     </div>
 
@@ -55,50 +55,19 @@
                             max-sm:tw-text-xl 
                             lg:tw-right-[10%] max-sm:tw-rounded-full">
         <div class="tw-m-2 tw-cursor-pointer social-share-link" id="copy-link" aria-label="copy link">
-            <i class="bi bi-share-fill"></i>
+            <i class="bi bi-share"></i>
         </div>
         
     </div>
-
-    <ul class="tw-flex tw-flex-wrap tw-gap-1 tw-mt-5">
-        {% for tag in tags%}
-            <a href="{% url "list-blogs" %}?search={{tag|urlencode}}"><li class="tag">{{tag}}</li></a>
-        {% endfor %}
-    </ul>
-
-    <div class="tw-w-[350px] tw-flex tw-flex-col tw-place-content-center 
-                tw-p-6 tw-rounded-lg tw-mt-[5%] tw-gap-4 tw-place-items-center">
-        
-            {% comment %} <span class="tw-text-2xl">Author</span> {% endcomment %}
-        {% if blog.user.dp and blog.user.dp.url %}
-            <div class="tw-w-[80px] tw-h-[80px] tw-rounded-full tw-overflow-clip">
-                <img src="{{blog.user.dp.url}}" 
-                alt="" srcset=""
-                class="tw-object-cover tw-w-full"
-                >
-            </div>
-        {% endif %}
-        <div class="tw-text-lg">{{blog.user.name}}</div>
-        {% comment %} <span class="tw-text-base">Last updated</span> {% endcomment %}
-        <span class="tw-text-sm">{% utc_to_local blog.datetime request.COOKIES.user_timezone %}</span>
-
-    </div>
-    
     
 </div>
 
-<!-- Blog view provided by https://foxcraft.tech -->
 {% endblock content %}
 
 {% block scripts %}
-<link rel="stylesheet" href="{% static "./css/quill-config.css" %}">
+<link rel="stylesheet" href="{% static "./css/blog.css" %}">
 <script>
-    
-    // copy share button
-    const twitter = document.getElementById("twitter-share")
-    {% comment %} const reddit = document.getElementById("reddit-share") {% endcomment %}
-    const linkedin = document.getElementById("linkedin-share")
-    const facebook = document.getElementById("facebook-share")
+
     const copy_link = document.getElementById("copy-link")
 
     copy_link.onclick = () => {
