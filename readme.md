@@ -68,14 +68,14 @@ follow the below steps :
 1. Star the repo: https://github.com/PaulleDemon/Django-website-template
    
 2. Clone the repo
-`git clone https://github.com/PaulleDemon/Django-website-template`
+`git clone https://github.com/thecodewall/homescape-web-platform`
 
 3. Install python 3.8 or above.
 https://www.python.org/downloads/
 
 4. Open the template folder and from the terminal change the
 directory to the current working directory.
-`cd home/Template`
+`cd homescape-web-platform`
 
 5. Install dependencies in an environment (creating an
 enviornment is optional, but recommended)
