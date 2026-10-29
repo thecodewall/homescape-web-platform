@@ -23,11 +23,6 @@ This template can help you save hours of work, allowing you to deliver a product
 ### Do I need to be an expert in Django to use this?
 A basic understanding of HTML, CSS, and JavaScript is all you need to get started. However, if you want to add custom pages or make more advanced modifications, having at least some foundational knowledge will be really helpful.
 
-### Looking for Other boiler plates?
-**SaaS website template:** [Django boilerplate](https://github.com/PaulleDemon/Django-SAAS-Boilerplate)
-
-**Free and open-source landing pages:** [Free landing pages](https://github.com/PaulleDemon/awesome-landing-pages)
-
 
 #### Want advance Django boiler plate?
 If you are looking for more advanced features, such as analytics integration, career pages, advanced
